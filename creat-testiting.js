@@ -1,4 +1,6 @@
 
+var fs = require('fs');
+
 // Болванка.
 var skelet = [ 
 '<!DOCTYPE html>',
@@ -18,10 +20,12 @@ var skelet = [
 '\n</html>'
 ].join('')
 
+// Путь к файлу - если задан аргументом.
+var path = process.argv[2] ? path = process.argv[2]: path = '' ;
 
 // Созадает файл с болванкой.
-var fs = require('fs');
-fs.writeFile("index.html ", skelet, function(err) {
+// Если переменная path пуста, создает файл в директории с программой.
+fs.writeFile(path + "index.html", skelet, function(err) {
     if(err) throw err;
     console.log("The file was created!");
 });
