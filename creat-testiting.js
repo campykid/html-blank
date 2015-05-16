@@ -1,7 +1,7 @@
 
 var fs = require('fs');
 
-// Добавляет Jquery, если есть аргумент j или Jquery.
+// Добавляет Jquery, если есть аргумент -j, j или Jquery.
 var Jquery = null;
 for (var i = process.argv.length - 1; i >= 0; i--) {
 	if (process.argv[i] === 'j' || process.argv[i] === 'Jquery' || process.argv[i] === '-j' ) {
@@ -32,7 +32,7 @@ Jquery,
 ].join('')
 
 // Путь к файлу - если задан аргументом.
-var path = process.argv[2].charAt(0) === '/' ? path = process.argv[2]: path = '' ;
+var path = (process.argv[2].charAt(0) === '/' || process.argv[2].charAt(0) === '.') ? path = process.argv[2]: path = '' ;
 
 // Созадает файл с болванкой.
 // Если переменная path пуста, создает файл в директории с программой.
